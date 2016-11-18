@@ -6,6 +6,7 @@
     <?= meta('robots', 'no-cache'); ?>
     <?= meta('description', 'App codeigniter.'); ?>
     <?= meta('keywords', 'app, codeigniter'); ?>
+    <?= meta('author', 'Ewerton Oliveira'); ?>
     <title><?= $title; ?> - Store CI</title>
     <?= link_tag('assets/css/bootstrap.min.css'); ?>
     <?= link_tag('assets/css/layout.css'); ?>

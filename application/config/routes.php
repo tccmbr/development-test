@@ -38,7 +38,9 @@
 |
 */
 
-$route['default_controller'] = "site";
+$route['default_controller'] = "store";
+$route['store/index/page/(:num)'] = "store/index/$2";
+$route['store/product/(:any)/(:num)'] = "product/show/$2";
 $route['404_override'] = '';
 
 

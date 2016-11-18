@@ -1,9 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Class Login
+ * @author Ewerton Oliveira
+ */
 class Login extends CI_Controller
 {
-    const REDIRECT_TO = 'site';
+    const REDIRECT_TO = 'store';
 
+    /**
+     * Login constructor.
+     */
     public function __construct()
     {
         parent::__construct();

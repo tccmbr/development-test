@@ -2,8 +2,8 @@
 
 if ( ! function_exists('link_active'))
 {
-    function link_active($pageActive, $page='')
+    function link_active($page='')
     {
-        return $pageActive == $page ? 'class="active"' : '';
+        return current_url() == $page ? 'class="active"' : '';
     }
 }
