@@ -9,24 +9,9 @@ class Store extends CI_Controller
 {
     public function index()
     {
+        $this->output->cache(30);
         $this->load->library('pagination');
-
-        $where = $this->input->get('search') ? 'product_name LIKE "%'.$this->input->get('search').'%"' : null;
-
-        switch ($this->input->get('orderBy')) {
-            case 1:
-                $orderBy = array('product_price','DESC');
-                break;
-            case 2:
-                $orderBy = array('product_price','ASC');
-                break;
-            case 3:
-                $orderBy = array('product_name','ASC');
-                break;
-            default:
-                $orderBy = array('product_id','DESC');
-                break;
-        }
+        $where = $this->input->get('search') ? 'product_name LIKE "%' . $this->input->get('search') . '%"' : null;
 
         $total_row = $this->Product_model->count($where);
         $config['base_url'] = site_url('store/index/page');
@@ -52,13 +37,15 @@ class Store extends CI_Controller
 
         $this->pagination->initialize($config);
         $page = is_numeric($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
-        $products = $this->Product_model->find($config["per_page"], $page, $where, $orderBy);
+        $products = $this->Product_model->random($this->Product_model->find($config["per_page"], $page, $where));
 
         $this->load->view('templates/store', array(
             'title' => 'Home',
-            'template_page' => 'store/index',
+            'templatePage' => 'store/index',
+            'logged_in' => $this->session->userdata('logged_in'),
             'products' => $products,
-            'links' => $this->pagination->create_links()
+            'links' => $this->pagination->create_links(),
+            'flashMessage' => $this->session->flashdata('message')
         ));
     }
 }

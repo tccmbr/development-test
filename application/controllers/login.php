@@ -14,12 +14,12 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('User');
+        $this->load->model('User_model', 'user');
     }
 
     public function authentication()
     {
-        $user = $this->User->get(['username' => $this->input->post('username'),
+        $user = $this->user->get(['username' => $this->input->post('username'),
             'password' => md5($this->input->post('password'))]);
 
         if (count($user) > 0) {
@@ -30,17 +30,15 @@ class Login extends CI_Controller
                 ));
             }
         }
-        
+
+        delete_files(APPPATH.'cache');
         redirect(self::REDIRECT_TO);
     }
 
     public function logout()
     {
-        $this->session->unset_userdata(array(
-            'username' => '',
-            'logged_in' => ''
-        ));
-
+        delete_files(APPPATH.'cache');
+        $this->session->sess_destroy();
         redirect(self::REDIRECT_TO);
     }
 }

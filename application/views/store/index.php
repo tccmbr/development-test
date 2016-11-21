@@ -1,19 +1,5 @@
 <div class="row">
     <?php if (count($products) > 0): ?>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-3">
-                    <?= form_open(site_url('store/index/page'),'method="get" class="navbar-form navbar-left"'); ?>
-                    <?= form_dropdown('orderBy',array(
-                        0 => 'Selecione',
-                        1 => "Maior preço",
-                        2 => "Menor preço",
-                        3 => "Produto"
-                    ),array(),'class="form-control" onchange="return submit();"'); ?>
-                    <?= form_close(); ?>
-                </div>
-            </div>
-        </div>
         <?php foreach($products as $product): ?>
             <div class="col-sm-4 col-md-3">
                 <div class="thumbnail">
@@ -32,9 +18,20 @@
                         <p>
                             <a href="<?= site_url('store/product/'.url_title($product->product_name).'/'
                                     .$product->product_id); ?>"
-                               class="btn btn-primary btn-sm">
+                               class="btn btn-primary btn-xs">
                                 <i class="glyphicon glyphicon-plus-sign"></i> Detalhes
                             </a>
+                            <?php if ($logged_in === TRUE): ?>
+                                <a href="<?= site_url('product/edit/'.$product->product_id); ?>"
+                                   class="btn btn-warning btn-xs">
+                                    <i class="glyphicon glyphicon-edit"></i> Editar
+                                </a>
+                                <a onclick="return confirm('Tem certeza que quer remover?')"
+                                   href="<?= site_url('product/delete/'.$product->product_id); ?>"
+                                   class="btn btn-danger btn-xs">
+                                    <i class="glyphicon glyphicon-remove-sign"></i> Remover
+                                </a>
+                            <?php endif; ?>
                         </p>
                     </div>
                 </div>

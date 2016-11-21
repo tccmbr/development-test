@@ -1,12 +1,12 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CI_Model
+class User_model extends CI_Model
 {
-    private $table = 'user';
     public $id;
-    public $state = 1;
+    public $state;
     public $username;
     public $password;
+    private $table = 'user';
 
     public function __construct()
     {
