@@ -40,6 +40,11 @@
                 <?= form_close(); ?>
             <?php else: ?>
                 <ul class="nav navbar-nav navbar-right">
+                    <li <?= link_active(site_url('order')); ?>>
+                        <a href="<?= site_url('order') ?>">
+                            <i class="glyphicon glyphicon-shopping-cart"></i> Pedidos
+                        </a>
+                    </li>
                     <li <?= link_active(site_url('product/new')); ?>>
                         <a href="<?= site_url('product/new') ?>">
                             <i class="glyphicon glyphicon-plus-sign"></i> Novo Produto

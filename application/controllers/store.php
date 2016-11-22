@@ -9,7 +9,6 @@ class Store extends CI_Controller
 {
     public function index()
     {
-        $this->output->cache(30);
         $this->load->library('pagination');
         $where = $this->input->get('search') ? 'product_name LIKE "%' . $this->input->get('search') . '%"' : null;
 
@@ -37,7 +36,7 @@ class Store extends CI_Controller
 
         $this->pagination->initialize($config);
         $page = is_numeric($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
-        $products = $this->Product_model->random($this->Product_model->find($config["per_page"], $page, $where));
+        $products = $this->Product_model->find($config["per_page"], $page, $where);
 
         $this->load->view('templates/store', array(
             'title' => 'Home',
