@@ -45,8 +45,8 @@
                             <i class="glyphicon glyphicon-shopping-cart"></i> Pedidos
                         </a>
                     </li>
-                    <li <?= link_active(site_url('product/new')); ?>>
-                        <a href="<?= site_url('product/new') ?>">
+                    <li <?= link_active(site_url('product/add')); ?>>
+                        <a href="<?= site_url('product/add') ?>">
                             <i class="glyphicon glyphicon-plus-sign"></i> Novo Produto
                         </a>
                     </li>

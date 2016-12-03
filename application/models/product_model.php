@@ -82,10 +82,9 @@ class Product_model extends CI_Model
         return false;
     }
 
-
-    public function insert()
+    public function insert(array $products)
     {
-        return $this->db->insert($this->table, $this);
+        return $this->db->insert_batch($this->table, $products);
     }
 
     public function update($product)

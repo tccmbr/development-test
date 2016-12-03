@@ -2,6 +2,8 @@
             Store CI @ <?= date('Y'); ?>
         </footer>
         <script src="<?= base_url('assets/js/jquery-1.12.3.js'); ?>" type="text/javascript"></script>
+        <script src="<?= base_url('assets/js/jquery.maskMoney.min.js'); ?>" type="text/javascript"></script>
         <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
+        <script src="<?= base_url('assets/js/product.js'); ?>" type="text/javascript"></script>
     </body>
 </html>

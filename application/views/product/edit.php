@@ -14,8 +14,10 @@
     <div class="col-md-3">
         <div class="form-group">
             <?= form_label('Preço', 'product_price'); ?>
-            <?= form_input('product_price', set_value('product_price', $product->product_price), 'id="product_price" 
-            class="form-control"') ?>
+            <?= form_input('product_price', set_value('product_price',
+                number_format($product->product_price, 2, ',','.')),
+            'id="product_price" 
+            class="form-control currency"') ?>
             <?= form_error('product_price'); ?>
         </div>
     </div>
